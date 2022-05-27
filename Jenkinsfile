@@ -3,13 +3,15 @@ pipeline {
     agent any
     stages {
 		stage('Clone Git Repo'){
-				steps{
-					git 'https://github.com/mikaelyurubeli/react-cypress.git'
+            steps{
+                git 'https://github.com/mikaelyurubeli/react-cypress.git'
 		    }
 		}
 
         stage('Build') {
-            echo "Building......"
+            steps{
+                echo "Building......"
+            }
         }
 
         stage('Testing') {
@@ -19,13 +21,15 @@ pipeline {
         }
 
         stage('Deploying') {
-            echo "Deploying......"
+            steps{
+                echo "Deploying......"
+            }
         }
         
 		stage('Publish HTML Report'){
-				steps{
-					publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'cypress/reports', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: ''])
-				}
+            steps{
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'cypress/reports', reportFiles: 'report.html', reportName: 'HTML Report', reportTitles: ''])
+            }
 		}
     }
 }
