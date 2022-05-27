@@ -1,23 +1,20 @@
 pipeline {
 
     agent any
-
-    parameters {
-        choice(name: 'BROWSER', choices: ['crhome', 'edge', 'firefox'], desrciption: "Choose the browser where you want to execute your scripts")
-    }
-
-    options {
-        ansiColor('xterm')
-    }
-
     stages {
+		stage('Clone Git Repo'){
+				steps{
+					git 'https://github.com/mikaelyurubeli/react-cypress.git'
+		    }
+		}
+
         stage('Build') {
             echo "Building......"
         }
 
         stage('Testing') {
             steps {
-                bat "npm run cypressrun --browser ${BROWSER}"
+                bat "npm run cypressrun"
             }
         }
 
