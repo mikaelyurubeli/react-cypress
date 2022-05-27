@@ -18,7 +18,9 @@
     "eject": "react-scripts eject",
     "cypressopen": "cypress open",
     "cypressrunnode": "./node_modules/.bin/cypress run",
-    "cypressrun": "npm run cypressrunnode --"
+    "cypressrun": "npm run cypressrunnode --",
+    "cy:chrome": "cypress run --browser chrome --headless",
+    "cy:firefox": "cypress run --browser firefox --headless"
   },
   "eslintConfig": {
     "extends": [
